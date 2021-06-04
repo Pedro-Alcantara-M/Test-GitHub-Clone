@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
 import {useStateValue} from '../context/state'
 import Styled from 'styled-components'
 import Aside from '../components/aside'
@@ -11,7 +10,6 @@ const Home = () => {
   const [state, dispatch] = useStateValue();
   const { avatar_url, name, login, followers, following } = state.user
 
-
   return (
     <Container>
       <div>
@@ -21,7 +19,7 @@ const Home = () => {
         login={login}
         followers={followers}
         following={following}
-        repoStarred="2"
+        repoStarred='2'
         />
       </div>
       <div className='repolist'>
@@ -41,10 +39,7 @@ const Container = Styled.div`
   height: calc(100vh - 200px);
   width: 100%;
   margin-top: 32px;
-
- 
 `;
-
 
 export default Home
 

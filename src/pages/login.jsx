@@ -18,7 +18,7 @@ const Login = () => {
     axios.get('https://api.github.com/users/' + userName)
     .then(res => {
       dispatch({
-        type: 'changeUser',
+        type: 'ChangeUser',
         payload: res.data
       })
       setUserName('')

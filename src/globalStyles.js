@@ -17,7 +17,7 @@ export default createGlobalStyle`
    font-family: Helvetica, Arial, sans-serif;
  }
 
- button {
+ button, a {
    cursor: pointer;
  }
 

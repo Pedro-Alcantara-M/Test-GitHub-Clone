@@ -49,7 +49,7 @@ const FormButton = Styled.button`
   border-radius: 5px;
   padding: 5px 16px;
   margin-right: 5px;
-  font-size: 14px;
+  font-size: 0.9rem;
   font-weight: 500;
   line-height: 20px;
 

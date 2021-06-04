@@ -3,6 +3,7 @@ import Styled from 'styled-components'
 
 const Tabs = () => {
 
+
   return (
     <TabBar>
       <TabItem>Overview</TabItem>

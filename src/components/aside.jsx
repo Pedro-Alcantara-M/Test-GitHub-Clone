@@ -25,9 +25,9 @@ const Aside = (props) => {
 const Container = Styled.div`
   display: flex;
   flex-direction: column;
-  position: relative;
-  height: calc(100vh - 62);
+  height: calc(100vh - 62px);
   width: 100%;
+  max-width: 280px;
   margin-top: 10px;
 `;
 
@@ -81,11 +81,17 @@ const Button = Styled.button`
 
 const Bottom = Styled.div`
   margin-right: 5px;
+
+
 `;
 
 const Followers = Styled.a`
   text-decoration: none;
   background-color: transparent;
+
+  &:hover{
+    color: #0366d6;
+  }
 
   small {
     transform: translateY(20px);
@@ -96,9 +102,18 @@ const Followers = Styled.a`
 const Following = Styled.a`
   text-decoration: none;
   background-color: transparent;
+
+  &:hover{
+    color: #0366d6;
+  }
 `;
 
 const Starred = Styled.a`
+
+&:hover{
+    color: #0366d6;
+  }
+  
   > svg{
     margin-left: 5px;
     transform: translateY(5px);
@@ -107,7 +122,7 @@ const Starred = Styled.a`
 
 const SmallPoint = Styled.small`
   margin: 0 3px;
-  
+
 `;
 
 export default Aside

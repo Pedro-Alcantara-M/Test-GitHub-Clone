@@ -7,6 +7,7 @@ const Footer = () => {
   return(
     <Container>
       <MenuContainer>
+        <Copyright className='copyright'>© 2021 GitHub, Inc.</Copyright>
         <MenuItem>Terms</MenuItem>
         <MenuItem>Privacy</MenuItem>
         <MenuItem>Security</MenuItem>
@@ -29,53 +30,56 @@ const Container = Styled.div`
   flex-direction: row;
   justify-content: center;
   border-top: 1px solid #cccccc58;
+  font-size: 0.8rem;
   height: 62px;
   width: 100%;
-  padding: 40px 0 8px 0;
-  margin-top: 40px;
+  padding: 20px 0 8px 0;
 `;
 
-export const MenuContainer = Styled.nav`
+const MenuContainer = Styled.nav`
   display: flex;
   flex-direction: row;
-  padding: 16px 32px;
+  padding: 16px 40px;
 `;
 
-export const MenuUser = Styled.div`
-  display: flex;
-  flex-direction: row;
-  margin-right: 16px;
-`;
-
-export const MenuItem = Styled.a`
+const MenuItem = Styled.a`
   display: flex;
   align-items:center;
   text-decoration: none;
-  margin: 1rem;
+  margin: 0 1rem;
   padding-right: 16px;
   font-weight: 0.5rem;
   color: #0366d6;
 
-  transition: opacity 0.3s;
-
-  &:hover {
-    border-bottom: 1px solid #0366d6;
+  .copyright{
+    color: #000;
   }
 
   > svg {
     font-size: 32px;
     margin-right: 5px;
   }
+
 `;
 
-export const MenuIcon = Styled.span`
+const Copyright = Styled.span`
+  display: flex;
+  align-items:center;
+  text-decoration: none;
+  margin: 0 1rem;
+  padding-right: 16px;
+  font-weight: 0.5rem;
+  color: #000000c8;
+`;
+
+const MenuIcon = Styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0px 6.5rem;
   color: #ccccccba;
-  transition: opacity 0.3s;
 
+  transition: color 0.5s;
   &:hover {
     color: #8b8b8b
   }

@@ -1,24 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import {useStateValue} from '../context/state'
-import StarOutlineIcon from '@material-ui/icons/StarOutline';
 import Styled from 'styled-components'
 import Moment from 'react-moment';
 import 'moment-timezone';
 
 
-const RepoList = () => {
+const StarredList = () => {
   const [state, dispatch] = useStateValue();
   const [isLoaded, setIsLoaded] = useState(false)
   const { login } = state.user
 
-  const repos = state.repository
+  const repos = state.starred
  
   useEffect(() => {
-    axios.get(`https://api.github.com/users/${login}/repos`)
+    axios.get(`https://api.github.com/users/${login}/starred`)
       .then(res =>{
         dispatch({
-          type: "Repository",
+          type: "Starred",
           payload: res.data
         })
       })
@@ -37,7 +36,6 @@ const RepoList = () => {
             <Update>Updated: <Moment fromNow>{repos.updated_at}</Moment></Update>
           </BottomInfo>
         </ListHeader>
-          <StarButton><StarOutlineIcon/>Star</StarButton>
       </List>
       )
   )}
@@ -109,21 +107,6 @@ const Update = Styled.span`
 `;
 
 const StarButton = Styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 30px;
-  width: 80px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 5px 16px;
-  margin-left: auto;
-  font-size: 0.7rem;
-  font-weight: 500;
-  line-height: 20px;
 
-  > svg{
-    font-size: 1.2rem;
-  }
 `;
-export default RepoList
+export default StarredList

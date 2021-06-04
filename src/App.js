@@ -10,16 +10,20 @@ import Content from './components/content';
 const App = () => {
   const initialState = { 
     user: {},
-    repository: []
+    repository: [],
+    starred: []
   }
   
   const reducer = (state, action) => {
     switch (action.type) {
-      case 'changeUser':
+      case 'ChangeUser':
         return { ...state, user: action.payload };
-      case "REPOSITORY": {
+      case "Repository": {
         return {...state, repository: action.payload };
         }
+        case "Starred": {
+          return {...state, starred: action.payload };
+          }
       default:
         return state;
     }

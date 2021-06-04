@@ -2,11 +2,15 @@ import React from 'react'
 import { 
   GitHub, 
   NotificationsNoneOutlined,
-  Add
+  Add,
+  AccountCircleIcon
 } from '@material-ui/icons';
+import {useStateValue} from '../context/state'
 import Styled from 'styled-components'
 
 const Navbar = () => {
+  const [state, dispatch] = useStateValue();
+  const {avatar_url} = state.user
 
   return (
     <Container>
@@ -21,7 +25,7 @@ const Navbar = () => {
         <MenuUser>
           <MenuIcon><NotificationsNoneOutlined/></MenuIcon>
           <MenuIcon><Add/></MenuIcon>
-          <MenuItem>Avatar_user</MenuItem>
+          <MenuAvatar src={avatar_url}/>
         </MenuUser>
     </Container>
   )
@@ -37,25 +41,25 @@ const Container = Styled.div`
   background-color:#1b1f23;
 `;
 
-export const MenuContainer = Styled.nav`
+const MenuContainer = Styled.nav`
   display: flex;
   flex-direction: row;
   padding: 16px 32px;
 `;
 
-export const MenuUser = Styled.div`
+const MenuUser = Styled.div`
   display: flex;
   flex-direction: row;
   margin-right: 16px;
 `;
 
-export const MenuItem = Styled.a`
+const MenuItem = Styled.a`
+  display: flex;
+  align-items:center;
   color: #ccc;
   text-decoration: none;
   padding-right: 16px;
   font-weight: bold;
-  display: flex;
-  align-items:center;
 
   transition: opacity 0.3s;
 
@@ -69,7 +73,7 @@ export const MenuItem = Styled.a`
   }
 `;
 
-export const MenuIcon = Styled.span`
+const MenuIcon = Styled.span`
   display: flex;
   align-items: center;
   margin-right: 10px;
@@ -85,7 +89,7 @@ export const MenuIcon = Styled.span`
   }
 `;
 
-export const MenuInput = Styled.input`
+const MenuInput = Styled.input`
   background-color: #1b1f23;
   border: 1px solid #cccccc4c;
   border-radius: 5px;
@@ -93,6 +97,16 @@ export const MenuInput = Styled.input`
   width: 100%;
   line-height: 20px;
   margin-right: 16px;
+`;
+
+const MenuAvatar = Styled.img`
+  display: flex;
+  align-items:center;
+  width: 25px;
+  height:25px;
+  border-radius: 50%;
+
+  transform: translateY(17px);
 
 `;
 
