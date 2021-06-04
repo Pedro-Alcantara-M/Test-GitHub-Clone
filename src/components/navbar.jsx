@@ -30,9 +30,10 @@ const Navbar = () => {
 const Container = Styled.div`
   display: flex;
   flex-direction: row;
+  position: relative;
   justify-content: space-between;
   height: 62px;
-  widht: 100%;
+  width: 100%;
   background-color:#1b1f23;
 `;
 

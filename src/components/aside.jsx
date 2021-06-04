@@ -13,8 +13,8 @@ const Aside = (props) => {
       <SubTitle>{props.login}</SubTitle>
       <Button>Edit profile</Button>
       <Bottom>
-        <Followers>{props.followers} followers </Followers>
-        <Following>{props.following} following</Following>
+        <Followers>{props.followers} followers <SmallPoint>.</SmallPoint></Followers>
+        <Following>{props.following} following <SmallPoint>.</SmallPoint></Following>
         <Starred><StarOutlineIcon/>{props.repoStarred} </Starred>
       </Bottom>
 
@@ -27,14 +27,14 @@ const Container = Styled.div`
   flex-direction: column;
   position: relative;
   height: calc(100vh - 62);
-  width: 15%;
-  margin-top: 32px;
+  width: 100%;
+  margin-top: 10px;
 `;
 
 const Image = Styled.div`
 
   img{
-    width: 100%;
+    width: 90%;
     border-radius: 50%;
     margin-bottom: 15px;
   }
@@ -67,7 +67,7 @@ const SubTitle = Styled.span`
 `;
 
 const Button = Styled.button`
-  width: 100%;
+  width: 90%;
   border: 1px solid #cccccc73;
   border-radius: 5px;
   padding: 5px 16px;
@@ -87,6 +87,10 @@ const Followers = Styled.a`
   text-decoration: none;
   background-color: transparent;
 
+  small {
+    transform: translateY(20px);
+  }
+
 `;
 
 const Following = Styled.a`
@@ -99,6 +103,11 @@ const Starred = Styled.a`
     margin-left: 5px;
     transform: translateY(5px);
   }
+`;
+
+const SmallPoint = Styled.small`
+  margin: 0 3px;
+  
 `;
 
 export default Aside

@@ -3,37 +3,32 @@ import axios from 'axios'
 import {useStateValue} from '../context/state'
 import Styled from 'styled-components'
 import Aside from '../components/aside'
-
+import Tabs from '../components/tabs'
+import SearchBar from '../components/searchBar'
+import RepoList from '../components/repoList'
 
 const Home = () => {
   const [state, dispatch] = useStateValue();
-  const [user, setUser] = useState()
-  const { avatar_url, name, login, public_repos, followers, following } = state.user
+  const { avatar_url, name, login, followers, following } = state.user
 
-  useEffect(() => {
-    axios.get('https://api.github.com/users/Pedro-Alcantara-M')
-    .then(res => {
-      dispatch({
-        type: 'changeUser',
-        payload: res.data
-      })
-      setUser(res.data)
-    })
-  }, [setUser])
-
- 
 
   return (
     <Container>
-      <Aside
-      avatar={avatar_url}
-      name={name}
-      login={login}
-      followers={followers}
-      following={following}
-      repoStarred="2"
-
-      />
+      <div>
+        <Aside
+        avatar={avatar_url}
+        name={name}
+        login={login}
+        followers={followers}
+        following={following}
+        repoStarred="2"
+        />
+      </div>
+      <div className='repolist'>
+          <Tabs/>
+          <SearchBar/>
+          <RepoList/>
+      </div>
     </Container>  
   )
 }
@@ -41,10 +36,13 @@ const Home = () => {
 
 const Container = Styled.div`
   display: flex;
-  flex-direction: column;
-  height: 100vh;
-  width: 80%;
+  flex-direction: row;
+  justify-content: center;
+  height: calc(100vh - 200px);
+  width: 100%;
   margin-top: 32px;
+
+ 
 `;
 
 

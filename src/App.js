@@ -9,13 +9,17 @@ import Content from './components/content';
 
 const App = () => {
   const initialState = { 
-    user: []
+    user: {},
+    repository: []
   }
   
   const reducer = (state, action) => {
     switch (action.type) {
       case 'changeUser':
         return { ...state, user: action.payload };
+      case "REPOSITORY": {
+        return {...state, repository: action.payload };
+        }
       default:
         return state;
     }

@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Styled from 'styled-components'
 import { useStateValue } from '../context/state';
 
 const Login = () => {
+  const history = useHistory()
   const [state, dispatch] = useStateValue();
   const [userName, setUserName] = useState('')
 
@@ -15,24 +16,27 @@ const Login = () => {
 
   const handleStart = () => {
     axios.get('https://api.github.com/users/' + userName)
-      .then(res => {
-        dispatch({ type: 'changeUser', payload: res.data});
+    .then(res => {
+      dispatch({
+        type: 'changeUser',
+        payload: res.data
       })
       setUserName('')
+      history.push('/home')
+    })
   }
-
 
   return (
     <Container>
-      <Box >
+      <Box>
         <label>Usuário</label>
         <Input 
         type='text'  
         onChange={handleChange} 
         placeholder='Digite seu nome de usuário'
         value={userName}
-        ></Input>
-        <Button type='button' onClick={handleStart}>Entrar</Button>
+        />
+        <Button type='button'onClick={handleStart}>Entrar</Button>
       </Box>
     </Container>
   )

@@ -11,10 +11,10 @@ const Content = () => {
     <Container>
       <Switch>
           <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/login">
             <Login/>
+          </Route>
+          <Route path="/home">
+            <Home />
           </Route>
         </Switch>
     </Container>
