@@ -2,8 +2,7 @@ import React from 'react'
 import { 
   GitHub, 
   NotificationsNoneOutlined,
-  Add,
-  AccountCircleIcon
+  Add
 } from '@material-ui/icons';
 import {useStateValue} from '../context/state'
 import Styled from 'styled-components'
@@ -11,7 +10,8 @@ import Styled from 'styled-components'
 const Navbar = () => {
   const [state, dispatch] = useStateValue();
   const {avatar_url} = state.user
-
+  
+ 
   return (
     <Container>
       <MenuContainer>
@@ -25,16 +25,16 @@ const Navbar = () => {
         <MenuUser>
           <MenuIcon><NotificationsNoneOutlined/></MenuIcon>
           <MenuIcon><Add/></MenuIcon>
-          <MenuAvatar src={avatar_url}/>
+           <MenuAvatar src={avatar_url}/>
         </MenuUser>
     </Container>
   )
+
 }
 
 const Container = Styled.div`
   display: flex;
   flex-direction: row;
-  position: relative;
   justify-content: space-between;
   height: 62px;
   width: 100%;
@@ -55,8 +55,12 @@ const MenuUser = Styled.div`
 
 const MenuItem = Styled.a`
   display: flex;
+  justify-content: center;
   align-items:center;
-  color: #ccc;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  color: #fff;
+  word-break: normal;
   text-decoration: none;
   padding-right: 16px;
   font-weight: bold;
@@ -64,7 +68,7 @@ const MenuItem = Styled.a`
   transition: opacity 0.3s;
 
   &:hover {
-    opacity: 0.7;
+    opacity: 0.6;
   }
 
   > svg {
@@ -92,6 +96,7 @@ const MenuIcon = Styled.span`
 const MenuInput = Styled.input`
   background-color: #1b1f23;
   border: 1px solid #cccccc4c;
+  color: #fff;
   border-radius: 5px;
   min-height: 28px;
   width: 100%;
@@ -105,10 +110,11 @@ const MenuAvatar = Styled.img`
   width: 25px;
   height:25px;
   border-radius: 50%;
-
   transform: translateY(17px);
 
+  &:hover {
+    opacity: 0.7;
+  }
+
 `;
-
-
 export default Navbar

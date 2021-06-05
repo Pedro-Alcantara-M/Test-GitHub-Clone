@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom';
 import Styled from 'styled-components'
 import { useStateValue } from '../context/state';
@@ -9,21 +8,16 @@ const Login = () => {
   const [state, dispatch] = useStateValue();
   const [userName, setUserName] = useState('')
 
+  
+
   const handleChange = (e) => {
     setUserName(e.target.value)
   }
 
-
   const handleStart = () => {
-    axios.get('https://api.github.com/users/' + userName)
-    .then(res => {
-      dispatch({
-        type: 'ChangeUser',
-        payload: res.data
-      })
+      localStorage.setItem('login', userName)
       setUserName('')
       history.push('/home')
-    })
   }
 
   return (

@@ -6,16 +6,14 @@ import Styled from 'styled-components'
 import Moment from 'react-moment';
 import 'moment-timezone';
 
-
 const RepoList = () => {
   const [state, dispatch] = useStateValue();
   const [isLoaded, setIsLoaded] = useState(false)
-  const { login } = state.user
-
+  const user = localStorage.getItem('login')
   const repos = state.repository
  
   useEffect(() => {
-    axios.get(`https://api.github.com/users/${login}/repos`)
+    axios.get(`https://api.github.com/users/${user}/repos`)
       .then(res =>{
         dispatch({
           type: "Repository",
@@ -49,8 +47,8 @@ const Container = Styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: calc(100vh - 70px);  
-  overflow: scroll;
+  height: calc(100vh - 350px);  
+  
 `; 
 
 const List = Styled.div`
@@ -62,6 +60,7 @@ const List = Styled.div`
   padding: 24px 24px;
   margin: 10px 5px 5px 5px;
   font-size: 1.2rem;
+  
 
   border-bottom: 1px solid #cccccc58;
   background-color: #fff;
@@ -79,9 +78,10 @@ const Title = Styled.a`
   color: #0366d6;
   margin-bottom: 10px;
 
-  &:hover {
-    border-bottom: 1px solid #0366d6;
+  &:hover{
+    text-decoration-line: underline; 
   }
+ 
 `;
 
 const Description = Styled.span`

@@ -9,10 +9,10 @@ const List = () => {
   return(
     <Container>
       <Switch>
-          <Route path="/repolist">
+          <Route exact path="/home">
             <Repolist />
           </Route>
-          <Route path="/repolist">
+          <Route path="/home/starredlist">
             <StarredList/>
           </Route>
         </Switch>

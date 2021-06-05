@@ -33,13 +33,13 @@ const Container = Styled.div`
   font-size: 0.8rem;
   height: 62px;
   width: 100%;
-  padding: 20px 0 8px 0;
+  padding: 1.8rem 0 0.8rem 0;
 `;
 
 const MenuContainer = Styled.nav`
   display: flex;
   flex-direction: row;
-  padding: 16px 40px;
+  padding: 1.6rem 4rem;
 `;
 
 const MenuItem = Styled.a`
@@ -47,17 +47,21 @@ const MenuItem = Styled.a`
   align-items:center;
   text-decoration: none;
   margin: 0 1rem;
-  padding-right: 16px;
+  padding-right: 1.6rem;
   font-weight: 0.5rem;
   color: #0366d6;
+
+  &:hover{
+    text-decoration-line: underline; 
+  }
 
   .copyright{
     color: #000;
   }
 
   > svg {
-    font-size: 32px;
-    margin-right: 5px;
+    font-size: 3.2rem;
+    margin-right: 0.5rem;
   }
 
 `;
@@ -67,7 +71,7 @@ const Copyright = Styled.span`
   align-items:center;
   text-decoration: none;
   margin: 0 1rem;
-  padding-right: 16px;
+  padding-right: 1.6rem;
   font-weight: 0.5rem;
   color: #000000c8;
 `;

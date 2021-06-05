@@ -1,13 +1,14 @@
 import React from 'react'
+import {useStateValue} from '../context/state'
 import Styled from 'styled-components'
 
 const Tabs = () => {
-
-
+  const [state, dispatch] = useStateValue();
+  const repos = state.repository
   return (
     <TabBar>
       <TabItem>Overview</TabItem>
-      <TabItem>Repository</TabItem>
+      <TabItem href='/home' >Repository<Count>{repos.length}</Count></TabItem>
       <TabItem>Projects</TabItem>
       <TabItem>Packages</TabItem>
     </TabBar>
@@ -40,6 +41,20 @@ const TabItem = Styled.a`
     border-bottom: 2px solid red;
     font-weight: bold;
   }
+  `;
+
+  const Count = Styled.small`
+    display: inline-block;
+    min-width: 20px;
+    padding: 0 6px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+    color: #000;
+    text-align: center;
+    background-color: #cccccc92;
+    border: 1px solid transparent;
+    border-radius: 2em;
   `;
 
 export default Tabs

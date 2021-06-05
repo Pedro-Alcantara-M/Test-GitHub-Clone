@@ -9,12 +9,11 @@ import 'moment-timezone';
 const StarredList = () => {
   const [state, dispatch] = useStateValue();
   const [isLoaded, setIsLoaded] = useState(false)
-  const { login } = state.user
-
+  const user = localStorage.getItem('login')
   const repos = state.starred
- 
+
   useEffect(() => {
-    axios.get(`https://api.github.com/users/${login}/starred`)
+    axios.get(`https://api.github.com/users/${user}/starred`)
       .then(res =>{
         dispatch({
           type: "Starred",
@@ -77,9 +76,6 @@ const Title = Styled.a`
   color: #0366d6;
   margin-bottom: 10px;
 
-  &:hover {
-    border-bottom: 1px solid #0366d6;
-  }
 `;
 
 const Description = Styled.span`
