@@ -39,6 +39,7 @@ const Container = Styled.div`
   height: 62px;
   width: 100%;
   background-color:#1b1f23;
+
 `;
 
 const MenuContainer = Styled.nav`
@@ -98,6 +99,7 @@ const MenuInput = Styled.input`
   border: 1px solid #cccccc4c;
   color: #fff;
   border-radius: 5px;
+  padding-left: 5px;
   min-height: 28px;
   width: 100%;
   line-height: 20px;

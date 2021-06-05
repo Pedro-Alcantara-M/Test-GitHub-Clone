@@ -1,29 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
-import {useStateValue} from '../context/state'
+import React from 'react';
+import { useStateValue } from '../context/state';
 import StarOutlineIcon from '@material-ui/icons/StarOutline';
-import Styled from 'styled-components'
+import Styled from 'styled-components';
 import Moment from 'react-moment';
 import 'moment-timezone';
 
 const RepoList = () => {
   const [state, dispatch] = useStateValue();
-  const [isLoaded, setIsLoaded] = useState(false)
-  const user = localStorage.getItem('login')
-  const repos = state.repository
- 
-  useEffect(() => {
-    axios.get(`https://api.github.com/users/${user}/repos`)
-      .then(res =>{
-        dispatch({
-          type: "Repository",
-          payload: res.data
-        })
-      })
-      setIsLoaded(true)
-   },[isLoaded])
+  const repos = state.repository;
     
-  return(
+  return (
     <Container>
     {repos.map((repos) => (
       <List key={repos.id}>
@@ -35,12 +21,15 @@ const RepoList = () => {
             <Update>Updated: <Moment fromNow>{repos.updated_at}</Moment></Update>
           </BottomInfo>
         </ListHeader>
-          <StarButton><StarOutlineIcon/>Star</StarButton>
+          <StarButton>
+            <StarOutlineIcon/>
+            Star
+          </StarButton>
       </List>
       )
-  )}
+    )}
     </Container>
-)
+  )
 }
 
 const Container = Styled.div`

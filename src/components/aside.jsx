@@ -20,8 +20,10 @@ const Aside = (props) => {
         <Image>
           <img src={props.avatar} alt='Avatar do usuário'/>
         </Image>
-        <Title>{props.name}</Title>
-        <SubTitle>{props.login}</SubTitle>
+        <Header>
+          <Title>{props.name}</Title>
+          <SubTitle>{props.login}</SubTitle>
+        </Header>
       </div>
       <Button>Edit profile</Button>
       <Bottom>
@@ -38,7 +40,6 @@ const Aside = (props) => {
 const Container = Styled.div`
   display: flex;
   flex-direction: column;
-  flex: 1;
   align-items: right;
   height: calc(100vh - 62px);
   width: 100%;
@@ -46,15 +47,7 @@ const Container = Styled.div`
   margin-top: 10px;
 `;
 
-const Header = Styled.div`
-  @media (max-width: 768px) {
-    display: flex;
-    flex-direction: row;
-  }
-`;
-
 const Image = Styled.div`
-
   img{
     width: 90%;
     border-radius: 50%;
@@ -62,6 +55,10 @@ const Image = Styled.div`
   }
 `;
 
+const Header = Styled.div`
+display: flex;
+flex-direction: column;
+`;
 const Title = Styled.span`
   font-size: 26px;
   line-height: 1.25rem;
@@ -93,9 +90,6 @@ const Button = Styled.button`
 
 const Bottom = Styled.div`
   margin-right: 5px;
-
-  
-  }
 `;
 
 const Followers = Styled.a`
@@ -122,6 +116,8 @@ const Following = Styled.a`
 `;
 
 const Starred = Styled.a`
+  color: #000;
+  text-decoration: none;
 
 &:hover{
     color: #0366d6;

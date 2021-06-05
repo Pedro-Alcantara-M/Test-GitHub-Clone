@@ -1,39 +1,31 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
-import {useStateValue} from '../context/state'
+import React, { useEffect, useState } from 'react';
+import { useStateValue } from '../context/state';
 import { useHistory } from 'react-router-dom';
-import Styled from 'styled-components'
-import userlogin from '../helper/userLogin'
-import Aside from '../components/aside'
-import Tabs from '../components/tabs'
-import SearchBar from '../components/searchBar'
-import List from '../components/list'
+import Styled from 'styled-components';
+import Aside from '../components/aside';
+import Tabs from '../components/tabs';
+import SearchBar from '../components/searchBar';
+import List from '../components/list';
+
+import { userlogin } from '../helper/userLogin';
+import loadUser from '../helper/userData';
 
 const Home = () => {
   const [state, dispatch] = useStateValue();
-  const[isLoaded, setIsLoaded] = useState(false)
-  const history = useHistory()
-  const { avatar_url, name, login, followers, following } = state.user
-  console.log(state.user)
+  const [isLoaded, setIsLoaded] = useState(false);
+  const { avatar_url, name, login, followers, following } = state.user;
+  const history = useHistory();
 
   useEffect(() => {
-    let loadedUser = userlogin()
+    let loadedUser = userlogin();
 
-    if(!loadedUser){
-      history.push('/')
-    }else {
-      axios.get('https://api.github.com/users/' + loadedUser)
-      .then(res => {
-        dispatch({
-          type: 'ChangeUser',
-          payload: res.data
-         })
-         return true
-        }) 
+    if (!loadedUser) {
+      history.push('/');
+    } else {
+      loadUser(dispatch);
+      setIsLoaded(true);
     }
-    setIsLoaded(true)
   },[isLoaded])
-   
 
   return (
     <Container>
@@ -62,10 +54,6 @@ const Container = Styled.div`
   height: calc(100vh - 200px);
   width: 70%;
   margin-top: 32px;
-
-  @media (max-width: 768px) {
-  flex-direction: column;
-  }
 `;
 
 const DivList = Styled.div`

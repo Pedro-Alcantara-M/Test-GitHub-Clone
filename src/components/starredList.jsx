@@ -1,29 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
-import {useStateValue} from '../context/state'
-import Styled from 'styled-components'
+import React from 'react';
+import Styled from 'styled-components';
 import Moment from 'react-moment';
 import 'moment-timezone';
-
+import { useStateValue } from '../context/state';
+import StarIcon from '@material-ui/icons/Star';
 
 const StarredList = () => {
   const [state, dispatch] = useStateValue();
-  const [isLoaded, setIsLoaded] = useState(false)
-  const user = localStorage.getItem('login')
-  const repos = state.starred
+  const repos = state.starred;
 
-  useEffect(() => {
-    axios.get(`https://api.github.com/users/${user}/starred`)
-      .then(res =>{
-        dispatch({
-          type: "Starred",
-          payload: res.data
-        })
-      })
-      setIsLoaded(true)
-   },[isLoaded])
-    
-  return(
+  return (
     <Container>
     {repos.map((repos) => (
       <List key={repos.id}>
@@ -35,19 +21,24 @@ const StarredList = () => {
             <Update>Updated: <Moment fromNow>{repos.updated_at}</Moment></Update>
           </BottomInfo>
         </ListHeader>
+          <StarButton>
+            <StarIcon/>
+            Unstar
+          </StarButton>
       </List>
       )
-  )}
+    )}
     </Container>
-)
+  )
 }
+
 
 const Container = Styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: calc(100vh - 70px);  
-  overflow: scroll;
+  height: calc(100vh - 350px);  
+  
 `; 
 
 const List = Styled.div`
@@ -59,6 +50,7 @@ const List = Styled.div`
   padding: 24px 24px;
   margin: 10px 5px 5px 5px;
   font-size: 1.2rem;
+  
 
   border-bottom: 1px solid #cccccc58;
   background-color: #fff;
@@ -76,6 +68,10 @@ const Title = Styled.a`
   color: #0366d6;
   margin-bottom: 10px;
 
+  &:hover{
+    text-decoration-line: underline; 
+  }
+ 
 `;
 
 const Description = Styled.span`
@@ -103,6 +99,21 @@ const Update = Styled.span`
 `;
 
 const StarButton = Styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 80px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px 16px;
+  margin-left: auto;
+  font-size: 0.7rem;
+  font-weight: 500;
+  line-height: 20px;
 
+  > svg{
+    font-size: 1.2rem;
+  }
 `;
 export default StarredList

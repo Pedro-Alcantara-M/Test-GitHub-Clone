@@ -1,24 +1,28 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import Styled from 'styled-components'
+import Styled from 'styled-components';
+import { userLogout } from '../helper/userLogin';
 import { useStateValue } from '../context/state';
 
 const Login = () => {
-  const history = useHistory()
+  const history = useHistory();
   const [state, dispatch] = useStateValue();
-  const [userName, setUserName] = useState('')
-
-  
+  const [userName, setUserName] = useState('');
+  const [logout, setLogout] = useState(false);
 
   const handleChange = (e) => {
-    setUserName(e.target.value)
+    setUserName(e.target.value);
   }
 
   const handleStart = () => {
-      localStorage.setItem('login', userName)
-      setUserName('')
-      history.push('/home')
+    localStorage.setItem('login', userName);
+    setUserName('');
+    history.push('/home');
   }
+
+  useEffect(() => {
+    userLogout(dispatch, setLogout);
+  }, [logout])
 
   return (
     <Container>
