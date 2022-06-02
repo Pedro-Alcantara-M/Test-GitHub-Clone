@@ -1,5 +1,4 @@
 # GitHub Clone
-Este aplicativo foi criado para o teste técnico da CVCCorp.
 
 ## Iniciando:
  - Baixe este repositorio utilizando o comando `git clone` [https://github.com/Pedro-Alcantara-M/Test-GitHub-Clone](https://github.com/Pedro-Alcantara-M/Test-GitHub-Clone)
